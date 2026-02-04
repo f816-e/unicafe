@@ -235,19 +235,23 @@ body{
 /* ============================= */
 /* ESTILOS SOLO PARA IMPRESIÓN  */
 /* ============================= */
-@page {
-    size: 80mm auto;
-    margin: 0;
+.ticket{
+    display: none;
 }
+@media print{
+    body *{
+        visibility: hidden;
+    }
 
-@media print {
+    .ticket, .ticket *{
+       visibility: visible;
+    }
 
-    .ticket {
-        width: 80mm;
-        margin: 0;
-        padding: 5mm;
-        page-break-before: avoid;
-        page-break-after: avoid;
+    #ticket {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
     }
 }
 /* ===== TICKET EXTRA ===== */
@@ -276,6 +280,7 @@ body{
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
