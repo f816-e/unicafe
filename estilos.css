@@ -1,0 +1,278 @@
+/* ===== COLORES ===== */
+:root{
+    --principal:#6F4E37;
+    --secundario:#C8A97E;
+    --fondo:#F7F3EE;
+    --tarjeta:#FFFFFF;
+    --verde:#3CB371;
+}
+/* ===== GENERAL ===== */
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:var(--fondo);
+}
+/* ===== HEADER ===== */
+.header{
+    display:flex;
+    justify-content:space-around;
+    background:var(--principal);
+    padding:12px;
+}
+.header button{
+    background:transparent;
+    border:none;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    padding:8px 12px;
+    border-radius:6px;
+}
+.header button:hover{
+    background:rgba(255,255,255,0.2);
+}
+/* ===== CONTENEDOR ===== */
+.contenedor{
+    display:flex;
+    height:calc(100vh - 60px);
+}
+/* ===== MENÚ IZQUIERDO ===== */
+.menu{
+    width:70%;
+    padding:15px;
+    overflow-y:auto;
+}
+/* ===== SECCIÓN ===== */
+.seccion{
+    display:none;
+}
+.seccion h3{
+    margin-bottom:15px;
+    color:var(--principal);
+}
+/* ===== GRID DE PRODUCTOS ===== */
+.grid-productos{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:15px;
+}
+/* ===== PRODUCTO ===== */
+.producto{
+    background:var(--tarjeta);
+    padding:12px;
+    border-radius:14px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.06);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.producto img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:10px;
+}
+.nombre{
+    font-weight:bold;
+    margin-top:8px;
+}
+.precio{
+    color:var(--verde);
+    font-weight:bold;
+    margin:5px 0;
+}
+/* ===== CANTIDAD ===== */
+.cantidad{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:5px;
+}
+.cantidad button{
+    width:26px;
+    height:26px;
+    border:none;
+    border-radius:50%;
+    background:var(--secundario);
+    cursor:pointer;
+    font-weight:bold;
+}
+/* ===== BOTÓN AGREGAR ===== */
+.agregar{
+    width:100%;
+    padding:7px;
+    background:var(--principal);
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+/* ===== PANEL DERECHO ===== */
+.pedido{
+    width:30%;
+    background:white;
+    padding:15px;
+    border-left:3px solid var(--secundario);
+}
+#listaPedido{
+    list-style:none;
+    padding:0;
+}
+#listaPedido li{
+    padding:6px 0;
+    border-bottom:1px dashed #ccc;
+}
+.total{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:15px;
+}
+.ordenar{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    background:var(--verde);
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+#listaPedido li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    margin: 6px 0;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+/* Items del pedido */
+.item-pedido{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f3f3f3;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Botón eliminar */
+.btn-eliminar{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.btn-eliminar:hover{
+    transform: scale(1.2);
+}
+
+/* ===== BOTÓN CONFIRMAR ===== */
+.ordenar{
+    background: linear-gradient(135deg, #3CB371, #2e8b57);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.ordenar:hover{
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* ===== LISTA PEDIDO ===== */
+.item-pedido span{
+    flex:1;
+}
+
+.item-pedido span:nth-child(2){
+    font-weight: bold;
+    color: var(--principal);
+}
+/* ===== TICKET ===== */
+.ticket{
+    display:none;
+    width:280px;
+    font-family: monospace;
+    padding:10px;
+}
+
+.ticket h2{
+    text-align:center;
+    margin:0;
+}
+
+.ticket .fecha{
+    text-align:center;
+    font-size:12px;
+}
+
+.ticket ul{
+    list-style:none;
+    padding:0;
+    margin:10px 0;
+}
+
+.ticket ul li{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+}
+
+.total-ticket{
+    font-weight:bold;
+    text-align:right;
+}
+
+.gracias{
+    text-align:center;
+    margin-top:10px;
+}
+/* ===== SOLO IMPRIMIR TICKET ===== */
+@media print{
+    body *{
+        display:none !important;
+    }
+
+    #ticket{
+        display:block !important;
+        position:absolute;
+        left:0;
+        top:0;
+        width:280px;
+    }
+
+    #ticket *{
+        display:block;
+    }
+}
+/* ===== TICKET EXTRA ===== */
+.folio{
+    text-align:center;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+.ticket hr{
+    border: none;
+    border-top: 1px dashed #000;
+    margin: 6px 0;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+    .grid-productos{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .grid-productos{
+        grid-template-columns: 1fr;
+    }
+}
