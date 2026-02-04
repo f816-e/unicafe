@@ -227,85 +227,71 @@ body{
     transform:scale(1.02);
 }
 
-/* ========================= */
-/*        TICKET              */
-/* ========================= */
+/* ===== TICKET ===== */
 .ticket{
-    display:none;
-    width:280px;
-    font-family:monospace;
-    padding:10px;
+    display: none;
+    width: 280px;
+    font-family: monospace;
+    padding: 10px;
 }
 
 .ticket h2{
-    text-align:center;
-    margin:0;
+    text-align: center;
+    margin: 0;
 }
 
-.ticket .fecha{
-    text-align:center;
-    font-size:12px;
+.ticket .fecha,
+.folio{
+    text-align: center;
+    font-size: 12px;
 }
 
 .ticket ul{
-    list-style:none;
-    padding:0;
-    margin:10px 0;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
 }
 
 .ticket ul li{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
 }
 
 .total-ticket{
-    font-weight:bold;
-    text-align:right;
+    font-weight: bold;
+    text-align: right;
 }
 
 .gracias{
-    text-align:center;
-    margin-top:10px;
-}
-
-.folio{
-    text-align:center;
-    font-size:12px;
-    margin-bottom:6px;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .ticket hr{
-    border:none;
-    border-top:1px dashed #000;
-    margin:6px 0;
+    border: none;
+    border-top: 1px dashed #000;
+    margin: 6px 0;
 }
 
-/* ========================= */
-/*   SOLO IMPRESIÓN          */
-/* ========================= */
+/* ===== SOLO IMPRESIÓN ===== */
 @media print{
     body *{
-        visibility:hidden;
+        display: none !important;
     }
 
-    #ticket,
-    #ticket *{
-        visibility:visible;
+    #ticket, #ticket *{
+        display: block !important;
     }
 
     #ticket{
-        display:block;
-        position:absolute;
-        left:0;
-        top:0;
-        width:100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 280px;
     }
 }
-
-/* ========================= */
-/*      RESPONSIVE           */
-/* ========================= */
+/* ===== RESPONSIVE ===== */
 @media(max-width:900px){
     .grid-productos{
         grid-template-columns: repeat(2,1fr);
@@ -316,16 +302,8 @@ body{
     .grid-productos{
         grid-template-columns: 1fr;
     }
-
-    .contenedor{
-        flex-direction:column;
-    }
-
-    .menu,
-    .pedido{
-        width:100%;
-    }
 }
+
 
 
 
