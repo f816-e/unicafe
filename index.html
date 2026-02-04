@@ -425,16 +425,19 @@
         // Imprimir
         window.print();
 
-        // Limpiar pedido
+        setTimeout(() =>{
+            // Limpiar pedido
         lista.innerHTML = '';
         total = 0;
         document.getElementById('total').textContent = total;
 
         // Ocultar ticket otra vez
         document.getElementById('ticket').style.display = 'none';
+        },500);
         }
 </script>
 
 </body>
 
 </html>
+
