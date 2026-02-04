@@ -232,24 +232,48 @@ body{
     text-align:center;
     margin-top:10px;
 }
-/* ===== SOLO IMPRIMIR TICKET ===== */
-.ticket{
+/* ============================= */
+/* ESTILOS SOLO PARA IMPRESIÓN  */
+/* ============================= */
+.ticket {
     display: none;
 }
-@media print{
-    body *{
+
+@page {
+    size: auto;
+    margin: 10mm;
+}
+
+@media print {
+
+    html, body {
+        height: auto;
+        overflow: hidden;
+    }
+
+    /* Ocultar todo */
+    body * {
         visibility: hidden;
     }
 
-    .ticket, .ticket *{
-       visibility: visible;
+    /* Mostrar solo el ticket */
+    .ticket, .ticket * {
+        visibility: visible;
     }
 
-    #ticket {
-        position: absolute;
-        left: 0;
-        top: 0;
+    .ticket {
+        position: relative;
         width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+        font-size: 12px;
+    }
+
+    .ticket ul,
+    .ticket li {
+        page-break-inside: avoid;
     }
 }
 /* ===== TICKET EXTRA ===== */
@@ -278,4 +302,5 @@ body{
         grid-template-columns: 1fr;
     }
 }
+
 
