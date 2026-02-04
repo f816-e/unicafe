@@ -235,10 +235,6 @@ body{
 /* ============================= */
 /* ESTILOS SOLO PARA IMPRESIÓN  */
 /* ============================= */
-.ticket {
-    display: none;
-}
-
 @page {
     size: auto;
     margin: 10mm;
@@ -302,5 +298,6 @@ body{
         grid-template-columns: 1fr;
     }
 }
+
 
 
