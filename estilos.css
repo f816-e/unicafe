@@ -242,17 +242,6 @@ body{
 
 @media print {
 
-    html, body {
-        width: 80mm;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        display: flex;
-        justify-content: center;
-    }
-
     .ticket {
         width: 80mm;
         margin: 0;
@@ -287,6 +276,7 @@ body{
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
