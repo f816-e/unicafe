@@ -233,21 +233,23 @@ body{
     margin-top:10px;
 }
 /* ===== SOLO IMPRIMIR TICKET ===== */
+.ticket{
+    display: none;
+}
 @media print{
     body *{
-        display:none !important;
+        visibility: hidden;
     }
 
-    #ticket{
-        display:block !important;
-        position:absolute;
-        left:0;
-        top:0;
-        width:280px;
+    .ticket, .ticket *{
+       visibility: visible;
     }
 
-    #ticket *{
-        display:block;
+    #ticket {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
     }
 }
 /* ===== TICKET EXTRA ===== */
@@ -276,3 +278,4 @@ body{
         grid-template-columns: 1fr;
     }
 }
+
