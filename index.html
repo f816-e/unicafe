@@ -417,14 +417,11 @@ function imprimirTicket(){
     document.getElementById('folioTicket').textContent = folio;
     localStorage.setItem('folioTicket', parseInt(folio) + 1);
 
-    document.getElementById('ticket').style.display = 'block';
-
         setTimeout(() => {
             window.print();
             lista.innerHTML = '';
             total = 0;
             document.getElementById('total').textContent = total;
-            document.getElementById('ticket').style.display = 'none';
         }, 100);
     }
 </script>
@@ -432,6 +429,7 @@ function imprimirTicket(){
 </body>
 
 </html>
+
 
 
 
