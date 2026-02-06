@@ -344,6 +344,8 @@
     <p class="gracias">¡Gracias por tu compra!</p>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
 <script>
     let total = 0;
     function agregarPedido(nombre, precio, id){
@@ -390,54 +392,71 @@
         e.textContent = v;
     }
 
-        function imprimirTicket(){
-        let lista = document.getElementById('listaPedido');
-        let ticketLista = document.getElementById('ticketLista');
+    async function imprimirTicket(){
+    const { jsPDF } = window.jspdf;
 
-        if(lista.children.length === 0){
-            alert('No hay productos en el pedido');
-            return;
-        }
+    let lista = document.getElementById('listaPedido');
 
-        // Mostrar ticket antes de imprimir
-        document.getElementById('ticket').style.display = 'block';
-
-        ticketLista.innerHTML = '';
-
-        [...lista.children].forEach(item => {
-            let nombre = item.children[0].textContent;
-            let precio = item.children[1].textContent;
-
-            let li = document.createElement('li');
-            li.innerHTML = `<span>${nombre}</span><span>${precio}</span>`;
-            ticketLista.appendChild(li);
-        });
-
-        document.getElementById('ticketTotal').textContent = total;
-        document.getElementById('fechaTicket').textContent =
-            new Date().toLocaleString();
-
-        // Folio automático
-        let folio = localStorage.getItem('folioTicket') || 1;
-        document.getElementById('folioTicket').textContent = folio;
-        localStorage.setItem('folioTicket', parseInt(folio) + 1);
-
-        // Imprimir
-        window.print();
-
-        setTimeout(() => {
-            // Limpiar pedido
-        lista.innerHTML = '';
-        total = 0;
-        document.getElementById('total').textContent = total;
-
-        // Ocultar ticket otra vez
-        document.getElementById('ticket').style.display = 'none';
-        },500);
-        
+    if(lista.children.length === 0){
+        alert('No hay productos en el pedido');
+        return;
     }
+
+    let doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: [80, 200]
+    });
+
+    let y = 10;
+
+    doc.setFont("courier", "normal");
+    doc.setFontSize(12);
+    doc.text("CAFETERIA UNIVERSITARIA", 5, y);
+    y += 6;
+
+    doc.setFontSize(9);
+    doc.text(new Date().toLocaleString(), 5, y);
+    y += 6;
+
+    let folio = localStorage.getItem('folioTicket') || 1;
+    doc.text("Ticket #" + folio, 5, y);
+    y += 6;
+
+    localStorage.setItem('folioTicket', parseInt(folio) + 1);
+
+    doc.text("--------------------------------", 5, y);
+    y += 5;
+
+    [...lista.children].forEach(item => {
+        let nombre = item.children[0].textContent;
+        let precio = item.children[1].textContent;
+
+        doc.text(nombre, 5, y);
+        doc.text(precio, 60, y);
+        y += 5;
+    });
+
+    y += 3;
+    doc.text("--------------------------------", 5, y);
+    y += 6;
+
+    doc.setFontSize(11);
+    doc.text("TOTAL: $" + total, 5, y);
+    y += 6;
+
+    doc.text("Gracias por tu compra!", 5, y);
+
+    doc.save("ticket_cafeteria.pdf");
+
+    // Limpiar pedido
+    lista.innerHTML = '';
+    total = 0;
+    document.getElementById('total').textContent = total;
+}
 </script>
 
 </body>
 </html>
+
 
